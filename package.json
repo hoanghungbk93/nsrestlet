@@ -24,7 +24,7 @@
   "license": "MIT",
   "dependencies": {
     "crypto-js": "^4.1.1",
-    "oauth-1.0a": "^2.2.5",
+    "oauth-1.0a": "https://github.com/hoanghungbk93/oauth-1.0a.git",
     "qs": "^6.7.0",
     "request": "https://github.com/hoanghungbk93/request.git"
   },
