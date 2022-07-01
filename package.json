@@ -26,7 +26,7 @@
     "crypto-js": "^4.1.1",
     "oauth-1.0a": "^2.2.5",
     "qs": "^6.7.0",
-    "request": "^2.88.0"
+    "request": "https://github.com/hoanghungbk93/request.git"
   },
   "devDependencies": {
     "coveralls": "^3.0.3",

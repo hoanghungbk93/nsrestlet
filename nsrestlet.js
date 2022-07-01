@@ -16,7 +16,7 @@
 
     Crypto is just the standard NodeJS crypto module built into the standard library
 */
-const  sha256 = require('crypto-js/sha256');
+const sha256 = require('crypto-js/sha256');
 const hmacSHA256 = require('crypto-js/hmac-sha256');
 const request = require('request');
 const OAuth = require('oauth-1.0a');
