@@ -16,6 +16,8 @@
 
     Crypto is just the standard NodeJS crypto module built into the standard library
 */
+const  sha256 = require('crypto-js/sha256');
+const hmacSHA256 = require('crypto-js/hmac-sha256');
 const request = require('request');
 const OAuth = require('oauth-1.0a');
 const qs = require('qs');
@@ -24,10 +26,7 @@ const url = require('url');
 //On very rare occasions, NodeJS can be built without the crypto module.  I dont' want to have to manage
 //the security of cryptographic modules, so I'm just going to let NodeJS handle it and throw an error if
 //the module doesn't exist (I can always direct users to version 1.0.1 of this module if they need it)
-var crypto;
-/* istanbul ignore next */      //we tell our code coverage tool to ignore this because it's really hard to test - we'd have to build Node.JS without Crypto
-try         {   crypto = require('crypto');     }
-catch(err)  {   throw new Error("This version of nsrestlet requires a version of Node.JS that supports crypto().  Get one that does or install nsrestlet version 1.0.1.")    }
+
 
 /*
     HELPER FUNCTIONS
@@ -43,7 +42,9 @@ catch(err)  {   throw new Error("This version of nsrestlet requires a version of
 
 function hash_function_sha256(base_string, key)
 {
-    return crypto.createHmac('sha256', key).update(base_string).digest('base64');
+    const hashDigest = sha256(base_string);
+    const hmacDigest = Base64.stringify(hmacSHA256(hashDigest, key));
+    return hmacDigest
 }
 
 function has_error_message(error_message, errors)
